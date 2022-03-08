@@ -9,11 +9,11 @@
 - Use the new `<script setup>` syntax
 - Tailwindcss
 - Husky
+- Vue I18n
 
 For configure:
 
 - [ ] PWA
-- [ ] I18n
 - [ ] Testing (Vitest)
 - [ ] Layout system
 - [ ] unocss preset-icons
