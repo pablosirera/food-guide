@@ -10,10 +10,11 @@
 - Tailwindcss
 - Husky
 - Vue I18n
+- Testing (Vitest)
 
 For configure:
 
-- [ ] PWA
-- [ ] Testing (Vitest)
 - [ ] Layout system
 - [ ] unocss preset-icons
+- [ ] PWA
+- [ ] nvmrc
