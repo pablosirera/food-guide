@@ -11,10 +11,10 @@
 - Husky
 - Vue I18n
 - Testing (Vitest)
+- Daisyui
 
 For configure:
 
-- [ ] Layout system
-- [ ] unocss preset-icons
+- [ ] icons library
 - [ ] PWA
 - [ ] nvmrc

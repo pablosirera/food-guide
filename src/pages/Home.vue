@@ -1,14 +1,24 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from '@/components/HelloWorld.vue'
-import { useI18n } from 'vue-i18n'
+import ListPlaces from '@/components/home/ListPlaces.vue'
 
-const { t } = useI18n()
+const places = [
+  {
+    img: 'https://api.lorem.space/image/burger?w=400&h=225',
+    name: 'Little thai',
+  },
+  {
+    img: 'https://api.lorem.space/image/drink?w=400&h=225',
+    name: 'Mcdonals',
+  },
+  {
+    img: 'https://api.lorem.space/image/pizza?w=400&h=225',
+    name: 'Burguer King',
+  },
+]
 </script>
 
 <template>
-  <img alt="Vue logo" src="@/assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  {{ t('hello') }}
+  <section class="flex justify-center">
+    <ListPlaces :places="places" />
+  </section>
 </template>

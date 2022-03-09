@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`ImageFullCard.spec.js > renders 1`] = `
+"<div class=\\"card w-44 h-36 m-3 bg-base-300 shadow-xl image-full\\">
+  <figure><img alt=\\"\\" /></figure>
+  <div class=\\"card-body justify-center\\">
+    <h2 class=\\"card-title text-center justify-center\\"></h2>
+  </div>
+</div>"
+`;
