@@ -1,3 +1,3 @@
 // Vitest Snapshot v1
 
-exports[`ListPlaces.spec.js > renders 1`] = `"<section class=\\"flex flex-wrap justify-center\\"></section>"`;
+exports[`ListPlaces.spec.js > renders 1`] = `"<section class=\\"flex flex-wrap justify-between sm:justify-center\\"></section>"`;
