@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-  <section class="flex flex-wrap justify-center">
+  <section class="flex flex-wrap justify-between sm:justify-center">
     <ImageFullCard
       v-for="(place, index) in places"
       :key="index"

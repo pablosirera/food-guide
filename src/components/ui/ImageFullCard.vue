@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="card w-44 h-36 m-3 bg-base-300 shadow-xl image-full">
+  <div class="card w-40 h-40 m-3 bg-base-300 shadow-xl image-full">
     <figure>
       <img :src="item.img" alt="" />
     </figure>
