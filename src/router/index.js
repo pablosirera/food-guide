@@ -5,9 +5,13 @@ const routes = [
   {
     name: 'AuthPage',
     path: '/auth',
-    // redirect: '/auth/login',
+    redirect: '/auth/login',
     component: () => import('@/pages/auth/AuthPage.vue'),
     children: [
+      {
+        path: 'login',
+        component: () => import('@/pages/auth/LoginPage.vue'),
+      },
       {
         path: 'register',
         component: () => import('@/pages/auth/RegisterPage.vue'),

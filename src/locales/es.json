@@ -1,3 +1,10 @@
 {
-  "hello": "hola"
+  "auth": {
+    "alreadyAccount": "¿Ya tienes una cuenta?",
+    "createAccount": "Crear una cuenta",
+    "email": "Dirección de email",
+    "login": "Iniciar sesión",
+    "pass": "Contraseña",
+    "register": "Regístrate"
+  }
 }

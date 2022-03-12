@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "alreadyAccount": "Already have an account?",
+    "createAccount": "Create an account",
+    "email": "Email address",
+    "login": "Login",
+    "pass": "Password",
+    "register": "Register"
+  }
+}

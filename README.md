@@ -15,6 +15,5 @@
 
 For configure:
 
-- [ ] icons library
 - [ ] PWA
 - [ ] nvmrc
