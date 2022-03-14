@@ -10,12 +10,14 @@ defineProps({
     required: true,
   },
 })
+defineEmits(['click'])
 </script>
 
 <template>
   <button
     class="rounded-full border py-2 px-6 flex items-center justify-center my-2"
     :class="type"
+    @click="$emit('click')"
   >
     {{ text }}
   </button>

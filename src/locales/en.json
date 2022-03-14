@@ -4,7 +4,9 @@
     "createAccount": "Create an account",
     "email": "Email address",
     "login": "Login",
+    "name": "Name",
     "pass": "Password",
-    "register": "Register"
+    "register": "Register",
+    "return": "Return"
   }
 }

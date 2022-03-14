@@ -4,7 +4,9 @@
     "createAccount": "Crear una cuenta",
     "email": "Dirección de email",
     "login": "Iniciar sesión",
+    "name": "Nombre",
     "pass": "Contraseña",
-    "register": "Regístrate"
+    "register": "Regístrate",
+    "return": "Volver"
   }
 }

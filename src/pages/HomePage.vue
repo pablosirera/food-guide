@@ -1,5 +1,7 @@
 <script setup>
 import ListPlaces from '@/components/home/ListPlaces.vue'
+import useAuthUser from '@/composables/useAuthUser'
+const { user } = useAuthUser()
 
 const places = [
   {
@@ -18,6 +20,7 @@ const places = [
 </script>
 
 <template>
+  <p>Hola: {{ user.user_metadata.name }}</p>
   <section class="flex justify-center">
     <ListPlaces :places="places" />
   </section>

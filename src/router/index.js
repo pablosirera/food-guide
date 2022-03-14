@@ -1,11 +1,19 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import useAuthUser from '@/composables/useAuthUser'
 
 const routes = [
   {
     path: '/:pathMatch(.*)',
     component: () => import('@/pages/404Error.vue'),
   },
-  { name: 'Home', path: '/', component: () => import('@/pages/HomePage.vue') },
+  {
+    name: 'HomePage',
+    path: '/',
+    component: () => import('@/pages/HomePage.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
   {
     name: 'AuthPage',
     path: '/auth',
@@ -22,6 +30,11 @@ const routes = [
         path: 'register',
         component: () => import('@/pages/auth/RegisterPage.vue'),
       },
+      {
+        name: 'EmailConfirmation',
+        path: 'email-confirmation',
+        component: () => import('@/pages/auth/EmailConfirmation.vue'),
+      },
     ],
   },
 ]
@@ -29,6 +42,13 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+})
+
+router.beforeEach(to => {
+  const { isLoggedIn } = useAuthUser()
+  if (!isLoggedIn() && to.meta.requiresAuth) {
+    return { name: 'LoginPage' }
+  }
 })
 
 export default router
