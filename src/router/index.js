@@ -9,10 +9,12 @@ const routes = [
     component: () => import('@/pages/auth/AuthPage.vue'),
     children: [
       {
+        name: 'LoginPage',
         path: 'login',
         component: () => import('@/pages/auth/LoginPage.vue'),
       },
       {
+        name: 'RegisterPage',
         path: 'register',
         component: () => import('@/pages/auth/RegisterPage.vue'),
       },

@@ -1,20 +1,14 @@
 <script setup>
 import BaseInput from '@/components/ui/BaseInput.vue'
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 
-const router = useRouter()
 const { t } = useI18n()
 
 const form = ref({
   email: '',
   password: '',
 })
-
-const navigateToLogin = () => {
-  router.push('/auth/login')
-}
 </script>
 
 <template>
@@ -30,9 +24,9 @@ const navigateToLogin = () => {
       <button type="submit" class="btn btn-sm btn-outline btn-accent">
         {{ t('auth.createAccount') }}
       </button>
-      <a class="cursor-pointer mt-3" @click="navigateToLogin()">
+      <router-link to="/auth/login" class="cursor-pointer mt-3">
         {{ t('auth.login') }}
-      </a>
+      </router-link>
     </div>
   </form>
 </template>
