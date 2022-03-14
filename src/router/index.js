@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+  {
+    path: '/:pathMatch(.*)',
+    component: () => import('@/pages/404Error.vue'),
+  },
   { name: 'Home', path: '/', component: () => import('@/pages/HomePage.vue') },
   {
     name: 'AuthPage',
