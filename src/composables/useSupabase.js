@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { UserModel } from '@/models/UserModel'
 import useAuthUser from './useAuthUser'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
@@ -9,7 +10,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 supabase.auth.onAuthStateChange((event, session) => {
   const { user } = useAuthUser()
 
-  user.value = session?.user || null
+  user.value = new UserModel(session?.user) || null
 })
 
 export default function useSupabase() {

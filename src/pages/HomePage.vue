@@ -20,7 +20,7 @@ const places = [
 </script>
 
 <template>
-  <p>Hola: {{ user.user_metadata.name }}</p>
+  <p>Hola: {{ user.name }}</p>
   <section class="flex justify-center">
     <ListPlaces :places="places" />
   </section>

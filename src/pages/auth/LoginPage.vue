@@ -21,7 +21,6 @@ const closeLoginForm = () => {
 
 const handleLogin = async ({ form, provider }) => {
   try {
-    console.log(form)
     provider ? await loginWithSocialProvider(provider) : await login(form)
     router.push({ name: 'HomePage' })
   } catch (error) {
