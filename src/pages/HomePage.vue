@@ -1,6 +1,7 @@
 <script setup>
 import ListPlaces from '@/components/home/ListPlaces.vue'
 import useAuthUser from '@/composables/useAuthUser'
+import BaseTabs from '../components/ui/BaseTabs.vue'
 const { user } = useAuthUser()
 
 const places = [
@@ -17,6 +18,24 @@ const places = [
     name: 'Burguer King',
   },
 ]
+
+const tabs = [
+  {
+    name: 'Tab 1',
+    route: '/',
+    slot: 'tab-1',
+  },
+  {
+    name: 'Tab 2',
+    route: '/lists',
+    slot: 'tab-2',
+  },
+  {
+    name: 'Tab 3',
+    route: '/profile',
+    slot: 'tab-3',
+  },
+]
 </script>
 
 <template>
@@ -24,4 +43,5 @@ const places = [
   <section class="flex justify-center">
     <ListPlaces :places="places" />
   </section>
+  <BaseTabs :tabs="tabs" />
 </template>

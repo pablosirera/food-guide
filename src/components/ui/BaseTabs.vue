@@ -1,0 +1,52 @@
+<script setup>
+import { computed, ref } from 'vue'
+
+const props = defineProps({
+  tabs: {
+    type: Array,
+    required: true,
+  },
+})
+
+const activeTab = ref(0)
+
+const numberTabs = computed(() => {
+  return props.tabs.length
+})
+
+const getTabActiveClass = tabId => {
+  return { 'tab-active': tabId === activeTab.value }
+}
+const selectTab = tabId => {
+  activeTab.value = tabId
+}
+</script>
+
+<template>
+  <div class="tabs">
+    <router-link
+      v-for="(tab, index) in tabs"
+      :key="index"
+      class="tab tab-lifted"
+      :class="getTabActiveClass(index)"
+      :to="tab.route"
+      @click="selectTab(index)"
+    >
+      {{ tab.name }}
+    </router-link>
+  </div>
+</template>
+
+<style scoped>
+.tabs {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.tabs .tab {
+  width: calc(100% / v-bind(numberTabs));
+}
+.tabs .tab.tab-active:last-child::after {
+  right: 0;
+}
+</style>
