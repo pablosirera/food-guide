@@ -1,8 +1,6 @@
 <script setup>
 import ImageCardsList from '@/components/ui/ImageCardsList.vue'
-import useAuthUser from '@/composables/useAuthUser'
 import BaseTabs from '@/components/ui/BaseTabs.vue'
-const { user } = useAuthUser()
 
 const places = [
   {
@@ -39,7 +37,6 @@ const tabs = [
 </script>
 
 <template>
-  <p>Hola: {{ user.name }}</p>
   <section class="flex justify-center">
     <ImageCardsList :items="places" />
   </section>
