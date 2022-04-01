@@ -1,7 +1,7 @@
 <script setup>
-import ListPlaces from '@/components/home/ListPlaces.vue'
+import ImageCardsList from '@/components/ui/ImageCardsList.vue'
 import useAuthUser from '@/composables/useAuthUser'
-import BaseTabs from '../components/ui/BaseTabs.vue'
+import BaseTabs from '@/components/ui/BaseTabs.vue'
 const { user } = useAuthUser()
 
 const places = [
@@ -41,7 +41,7 @@ const tabs = [
 <template>
   <p>Hola: {{ user.name }}</p>
   <section class="flex justify-center">
-    <ListPlaces :places="places" />
+    <ImageCardsList :items="places" />
   </section>
   <BaseTabs :tabs="tabs" :use-icons="true" />
 </template>

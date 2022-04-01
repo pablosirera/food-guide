@@ -2,7 +2,7 @@
 import ImageFullCard from '@/components/ui/ImageFullCard.vue'
 
 defineProps({
-  places: {
+  items: {
     type: Array,
     default: () => [],
   },
@@ -11,10 +11,6 @@ defineProps({
 
 <template>
   <section class="flex flex-wrap justify-between sm:justify-center">
-    <ImageFullCard
-      v-for="(place, index) in places"
-      :key="index"
-      :item="place"
-    />
+    <ImageFullCard v-for="(item, index) in items" :key="index" :item="item" />
   </section>
 </template>
