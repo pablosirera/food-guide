@@ -4,9 +4,19 @@
     "createAccount": "Crear una cuenta",
     "email": "Dirección de email",
     "login": "Iniciar sesión",
+    "loginGoogle": "Iniciar sesión con google",
     "name": "Nombre",
     "pass": "Contraseña",
     "register": "Regístrate",
     "return": "Volver"
+  },
+  "categories": {
+    "choose": "Elige lista",
+    "listName": "Nombre de la lista",
+    "new": "Crear nueva lista"
+  },
+  "general": {
+    "cancel": "Cancelar",
+    "create": "Crear"
   }
 }

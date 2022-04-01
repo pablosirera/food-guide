@@ -23,6 +23,14 @@ const routes = [
     },
   },
   {
+    name: 'NewCategoryPage',
+    path: '/categories/new',
+    component: () => import('@/pages/NewCategoryPage.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     name: 'AuthPage',
     path: '/auth',
     redirect: '/auth/login',

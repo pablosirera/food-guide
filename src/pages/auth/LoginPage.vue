@@ -32,7 +32,7 @@ const handleLogin = async ({ form, provider }) => {
 <template>
   <template v-if="!loginFormIsVisible">
     <SocialAuthButton
-      text="Iniciar sesión con google"
+      :text="t('auth.loginGoogle')"
       @click="handleLogin({ provider: 'google' })"
     />
     <div class="text-center">

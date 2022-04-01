@@ -20,7 +20,7 @@ const places = [
 
 <template>
   <BaseLayout>
-    <section class="flex justify-center">
+    <section class="flex justify-center p-3">
       <ImageCardsList :items="places" />
     </section>
   </BaseLayout>
