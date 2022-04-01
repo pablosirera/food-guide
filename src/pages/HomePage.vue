@@ -1,6 +1,6 @@
 <script setup>
 import ImageCardsList from '@/components/ui/ImageCardsList.vue'
-import BaseTabs from '@/components/ui/BaseTabs.vue'
+import BaseLayout from '@/components/layouts/BaseLayout.vue'
 
 const places = [
   {
@@ -16,29 +16,12 @@ const places = [
     name: 'Burguer King',
   },
 ]
-
-const tabs = [
-  {
-    name: 'HomeIcon',
-    route: '/',
-    slot: 'tab-1',
-  },
-  {
-    name: 'PlusIcon',
-    route: '/lists',
-    slot: 'tab-2',
-  },
-  {
-    name: 'UserIcon',
-    route: '/profile',
-    slot: 'tab-3',
-  },
-]
 </script>
 
 <template>
-  <section class="flex justify-center">
-    <ImageCardsList :items="places" />
-  </section>
-  <BaseTabs :tabs="tabs" :use-icons="true" />
+  <BaseLayout>
+    <section class="flex justify-center">
+      <ImageCardsList :items="places" />
+    </section>
+  </BaseLayout>
 </template>

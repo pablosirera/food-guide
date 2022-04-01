@@ -1,5 +1,6 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 const props = defineProps({
   tabs: {
@@ -12,17 +13,14 @@ const props = defineProps({
   },
 })
 
-const activeTab = ref(0)
+const route = useRoute()
 
 const numberTabs = computed(() => {
   return props.tabs.length
 })
 
-const getTabActiveClass = tabId => {
-  return { 'tab-active': tabId === activeTab.value }
-}
-const selectTab = tabId => {
-  activeTab.value = tabId
+const getTabActiveClass = tabRoute => {
+  return { 'tab-active': tabRoute === route.path }
 }
 </script>
 
@@ -32,9 +30,8 @@ const selectTab = tabId => {
       v-for="(tab, index) in tabs"
       :key="index"
       class="tab tab-lifted h-14"
-      :class="getTabActiveClass(index)"
+      :class="getTabActiveClass(tab.route)"
       :to="tab.route"
-      @click="selectTab(index)"
     >
       <template v-if="!useIcons">{{ tab.name }}</template>
       <component :is="tab.name" v-else class="h-8 w-8" />
