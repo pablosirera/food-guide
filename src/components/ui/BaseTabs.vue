@@ -6,6 +6,10 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  useIcons: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const activeTab = ref(0)
@@ -27,12 +31,13 @@ const selectTab = tabId => {
     <router-link
       v-for="(tab, index) in tabs"
       :key="index"
-      class="tab tab-lifted"
+      class="tab tab-lifted h-14"
       :class="getTabActiveClass(index)"
       :to="tab.route"
       @click="selectTab(index)"
     >
-      {{ tab.name }}
+      <template v-if="!useIcons">{{ tab.name }}</template>
+      <component :is="tab.name" v-else class="h-8 w-8" />
     </router-link>
   </div>
 </template>

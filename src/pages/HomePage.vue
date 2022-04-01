@@ -21,17 +21,17 @@ const places = [
 
 const tabs = [
   {
-    name: 'Tab 1',
+    name: 'HomeIcon',
     route: '/',
     slot: 'tab-1',
   },
   {
-    name: 'Tab 2',
+    name: 'PlusIcon',
     route: '/lists',
     slot: 'tab-2',
   },
   {
-    name: 'Tab 3',
+    name: 'UserIcon',
     route: '/profile',
     slot: 'tab-3',
   },
@@ -43,5 +43,5 @@ const tabs = [
   <section class="flex justify-center">
     <ListPlaces :places="places" />
   </section>
-  <BaseTabs :tabs="tabs" />
+  <BaseTabs :tabs="tabs" :use-icons="true" />
 </template>
