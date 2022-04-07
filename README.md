@@ -17,3 +17,10 @@ For configure:
 
 - [ ] PWA
 - [ ] nvmrc
+
+### Install
+```
+$ npm install
+
+$ npm run serve
+```
