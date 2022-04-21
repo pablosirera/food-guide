@@ -31,6 +31,14 @@ const routes = [
     },
   },
   {
+    name: 'AddPlacesCategoryPage',
+    path: '/categories/:id/places',
+    component: () => import('@/pages/AddPlacesCategoryPage.vue'),
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
     name: 'AuthPage',
     path: '/auth',
     redirect: '/auth/login',

@@ -11,11 +11,17 @@ defineProps({
     default: false,
   },
 })
+defineEmits(['card-clicked'])
 </script>
 
 <template>
   <section class="flex flex-wrap justify-between sm:justify-center">
-    <ImageFullCard v-for="(item, index) in items" :key="index" :item="item" />
+    <ImageFullCard
+      v-for="(item, index) in items"
+      :key="index"
+      :item="item"
+      @card-clicked="$emit('card-clicked', $event)"
+    />
     <div v-if="showAdd" class="stats shadow m-3 w-40 h-40">
       <div class="stat bg-neutral">
         <router-link

@@ -5,10 +5,14 @@ defineProps({
     default: () => ({}),
   },
 })
+defineEmits(['card-clicked'])
 </script>
 
 <template>
-  <div class="card w-40 h-40 m-3 shadow-xl image-full">
+  <div
+    class="card w-40 h-40 m-3 shadow-xl image-full cursor-pointer"
+    @click="$emit('card-clicked', item)"
+  >
     <figure>
       <img :src="item.image" />
     </figure>

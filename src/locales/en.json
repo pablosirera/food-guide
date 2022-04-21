@@ -19,5 +19,10 @@
   "general": {
     "cancel": "Cancel",
     "create": "Create"
+  },
+  "places": {
+    "new": {
+      "title": "Add new place"
+    }
   }
 }
