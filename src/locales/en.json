@@ -13,7 +13,8 @@
   "categories": {
     "choose": "Choose list",
     "listName": "List name",
-    "new": "Create new list"
+    "new": "Create new list",
+    "uploadFile": "Upload photo"
   },
   "general": {
     "cancel": "Cancel",

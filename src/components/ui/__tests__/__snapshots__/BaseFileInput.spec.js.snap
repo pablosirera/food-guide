@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Components > UI > BaseFileInput > should be render 1`] = `
+"<div class=\\"form-control w-full max-w-xs\\">
+  <!--v-if--><button type=\\"button\\" class=\\"btn btn-md btn-accent btn-outline\\"></button><input type=\\"file\\" accept=\\"image/*\\" class=\\"hidden\\" />
+</div>"
+`;
