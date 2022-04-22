@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Components > UI > ImageCardsList > renders 1`] = `
-"<section class=\\"flex flex-wrap justify-between sm:justify-center\\">
+"<section class=\\"flex flex-wrap\\" data-v-9ee667be=\\"\\">
   <!--v-if-->
 </section>"
 `;

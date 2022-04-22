@@ -4,16 +4,16 @@ defineProps({
     type: Object,
     default: () => ({}),
   },
+  size: {
+    type: String,
+    default: 'normal',
+  },
 })
-defineEmits(['card-clicked'])
 </script>
 
 <template>
-  <div
-    class="card w-40 h-40 m-3 shadow-xl image-full cursor-pointer"
-    @click="$emit('card-clicked', item)"
-  >
-    <figure>
+  <div class="card m-3 image-full cursor-pointer" :class="size">
+    <figure class="w-full h-full overflow-hidden">
       <img :src="item.image" />
     </figure>
     <div class="card-body justify-center">
@@ -21,3 +21,18 @@ defineEmits(['card-clicked'])
     </div>
   </div>
 </template>
+
+<style scoped>
+.card.normal {
+  @apply w-40 h-40;
+}
+.card.small {
+  @apply w-20 h-20;
+}
+.card.small .card-body {
+  padding: 0;
+}
+.card.small .card-title {
+  @apply text-base;
+}
+</style>

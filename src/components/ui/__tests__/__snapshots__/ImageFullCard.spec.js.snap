@@ -1,10 +1,10 @@
 // Vitest Snapshot v1
 
 exports[`ImageFullCard.spec.js > renders 1`] = `
-"<div class=\\"card w-40 h-40 m-3 shadow-xl image-full cursor-pointer\\">
-  <figure><img /></figure>
-  <div class=\\"card-body justify-center\\">
-    <h2 class=\\"card-title text-center justify-center\\"></h2>
+"<div class=\\"card m-3 image-full cursor-pointer normal\\" data-v-05031e22=\\"\\">
+  <figure class=\\"w-full h-full overflow-hidden\\" data-v-05031e22=\\"\\"><img data-v-05031e22=\\"\\" /></figure>
+  <div class=\\"card-body justify-center\\" data-v-05031e22=\\"\\">
+    <h2 class=\\"card-title text-center justify-center\\" data-v-05031e22=\\"\\"></h2>
   </div>
 </div>"
 `;

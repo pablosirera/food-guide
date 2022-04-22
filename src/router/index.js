@@ -15,25 +15,9 @@ const routes = [
     },
   },
   {
-    name: 'CategoriesPage',
-    path: '/categories',
-    component: () => import('@/pages/CategoriesPage.vue'),
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    name: 'NewCategoryPage',
-    path: '/categories/new',
-    component: () => import('@/pages/NewCategoryPage.vue'),
-    meta: {
-      requiresAuth: true,
-    },
-  },
-  {
-    name: 'AddPlacesCategoryPage',
-    path: '/categories/:id/places',
-    component: () => import('@/pages/AddPlacesCategoryPage.vue'),
+    name: 'AddPlacesPage',
+    path: '/places/new',
+    component: () => import('@/pages/AddPlacesPage.vue'),
     meta: {
       requiresAuth: true,
     },

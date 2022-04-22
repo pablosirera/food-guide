@@ -11,9 +11,7 @@
     "return": "Volver"
   },
   "categories": {
-    "choose": "Elige lista",
     "listName": "Nombre de la lista",
-    "new": "Crear nueva lista",
     "uploadFile": "Seleccionar foto"
   },
   "general": {
@@ -22,6 +20,7 @@
   },
   "places": {
     "new": {
+      "selectList": "Selecciona tu lista:",
       "title": "Añadir nuevo sitio"
     }
   }

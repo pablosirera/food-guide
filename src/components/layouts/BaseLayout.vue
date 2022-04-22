@@ -9,7 +9,7 @@ const tabs = [
   },
   {
     name: 'PlusIcon',
-    route: '/categories',
+    route: '/places/new',
     slot: 'tab-2',
   },
   {
