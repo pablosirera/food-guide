@@ -25,11 +25,11 @@ const getTabActiveClass = tabRoute => {
 </script>
 
 <template>
-  <div class="tabs">
+  <div class="tabs tabs-boxed">
     <router-link
       v-for="(tab, index) in tabs"
       :key="index"
-      class="tab tab-lifted h-14"
+      class="tab h-14 cursor-pointer"
       :class="getTabActiveClass(tab.route)"
       :to="tab.route"
     >
@@ -44,6 +44,7 @@ const getTabActiveClass = tabRoute => {
   position: fixed;
   bottom: 0;
   width: 100%;
+  left: 0;
 }
 .tabs .tab {
   width: calc(100% / v-bind(numberTabs));
