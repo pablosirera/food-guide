@@ -23,7 +23,7 @@ defineEmits(['update:modelValue'])
 
 <template>
   <div class="form-control w-full max-w-xs">
-    <label class="label">
+    <label v-if="label" class="label">
       <span class="label-text">{{ label }}</span>
     </label>
     <input

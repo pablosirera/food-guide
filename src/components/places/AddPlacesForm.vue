@@ -4,6 +4,8 @@ import ImageCardsList from '@/components/ui/ImageCardsList.vue'
 import NewCategoryForm from '@/components/places/NewCategoryForm.vue'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import BaseToggle from '@/components/ui/BaseToggle.vue'
+import BaseInput from '@/components/ui/BaseInput.vue'
 
 defineProps({
   categories: {
@@ -15,6 +17,7 @@ const emit = defineEmits(['category-created'])
 
 const { t } = useI18n()
 const shouldShowCategoryForm = ref(false)
+const isSearchPlace = ref(false)
 
 const showNewCategory = () => {
   shouldShowCategoryForm.value = true
@@ -30,7 +33,11 @@ const createCategory = category => {
 
 <template>
   <form novalidate>
-    <BaseSearchInput />
+    <BaseToggle v-model="isSearchPlace" class="mb-4">
+      {{ t('places.new.searchPlace') }}
+    </BaseToggle>
+    <BaseSearchInput v-if="isSearchPlace" />
+    <BaseInput v-else :placeholder="t('places.new.placeName')" />
     <section class="mt-7">
       <p>{{ t('places.new.selectList') }}</p>
       <div class="overflow-x-auto">
@@ -49,5 +56,8 @@ const createCategory = category => {
         @category-created="createCategory"
       />
     </section>
+    <BaseToggle v-model="isVisited" class="mb-4">
+      {{ t('places.new.isVisited') }}
+    </BaseToggle>
   </form>
 </template>

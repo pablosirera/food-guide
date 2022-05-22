@@ -20,6 +20,9 @@
   },
   "places": {
     "new": {
+      "isVisited": "¿Ya has ido?",
+      "placeName": "Nombre del sitio",
+      "searchPlace": "¿Quieres buscar el sitio?",
       "selectList": "Selecciona tu lista:",
       "title": "Añadir nuevo sitio"
     }
