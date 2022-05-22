@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { computed } from '@vue/runtime-core'
+
+const props = defineProps({
   item: {
     type: Object,
     default: () => ({}),
@@ -8,11 +10,27 @@ defineProps({
     type: String,
     default: 'normal',
   },
+  selected: {
+    type: Boolean,
+    default: false,
+  },
+})
+defineEmits(['click'])
+
+const cardClasses = computed(() => {
+  return {
+    [props.size]: true,
+    selected: props.selected,
+  }
 })
 </script>
 
 <template>
-  <div class="card m-3 image-full cursor-pointer" :class="size">
+  <div
+    class="card m-3 image-full cursor-pointer"
+    :class="cardClasses"
+    @click="$emit('click')"
+  >
     <figure class="w-full h-full overflow-hidden">
       <img :src="item.image" />
     </figure>
@@ -23,6 +41,9 @@ defineProps({
 </template>
 
 <style scoped>
+.selected {
+  border: 2px solid theme('colors.primary');
+}
 .card.normal {
   @apply w-40 h-40;
 }

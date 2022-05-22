@@ -18,6 +18,8 @@ const emit = defineEmits(['category-created'])
 const { t } = useI18n()
 const shouldShowCategoryForm = ref(false)
 const isSearchPlace = ref(false)
+const isVisited = ref(false)
+let categorySelected = null
 
 const showNewCategory = () => {
   shouldShowCategoryForm.value = true
@@ -28,6 +30,10 @@ const hideCategoryForm = () => {
 const createCategory = category => {
   hideCategoryForm()
   emit('category-created', category)
+}
+const selectCategory = categoryId => {
+  categorySelected = categoryId
+  console.log(categorySelected)
 }
 </script>
 
@@ -47,6 +53,7 @@ const createCategory = category => {
           :items="categories"
           :show-add="true"
           @card-add-clicked="showNewCategory"
+          @select-item="selectCategory"
         />
       </div>
 

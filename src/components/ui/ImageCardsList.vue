@@ -1,5 +1,6 @@
 <script setup>
 import ImageFullCard from '@/components/ui/ImageFullCard.vue'
+import { ref } from 'vue'
 
 defineProps({
   items: {
@@ -15,7 +16,17 @@ defineProps({
     default: 'normal',
   },
 })
-defineEmits(['card-add-clicked'])
+const emit = defineEmits(['card-add-clicked', 'select-item'])
+
+const itemSelectedId = ref()
+
+const checkIfIsSelected = itemId => {
+  return itemSelectedId.value === itemId
+}
+const selectItem = item => {
+  itemSelectedId.value = item
+  emit('select-item', item)
+}
 </script>
 
 <template>
@@ -25,6 +36,8 @@ defineEmits(['card-add-clicked'])
       :key="index"
       :item="item"
       :size="size"
+      :selected="checkIfIsSelected(item.id)"
+      @click="selectItem(item.id)"
     />
     <div v-if="showAdd" class="stats m-3" :class="size">
       <div class="stat bg-neutral">
