@@ -34,7 +34,6 @@ const createCategory = category => {
 }
 const selectCategory = categoryId => {
   categorySelected = categoryId
-  console.log(categorySelected)
 }
 const submitForm = () => {
   emit('create-place', {
