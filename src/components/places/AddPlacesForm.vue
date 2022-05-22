@@ -1,6 +1,6 @@
 <script setup>
 import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
-import ImageCardsList from '@/components/ui/ImageCardsList.vue'
+import ImageFullCardsList from '@/components/ui/ImageFullCardsList.vue'
 import NewCategoryForm from '@/components/places/NewCategoryForm.vue'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -58,7 +58,7 @@ const submitForm = () => {
     <section class="mt-7">
       <p>{{ t('places.new.selectList') }}</p>
       <div class="overflow-x-auto">
-        <ImageCardsList
+        <ImageFullCardsList
           class="flex-nowrap min-w-max"
           size="small"
           :items="categories"

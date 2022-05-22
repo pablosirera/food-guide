@@ -5,6 +5,16 @@ export default function usePlaces() {
   const { supabase } = useSupabase()
   const { user } = useAuthUser()
 
+  const listPlaces = async () => {
+    const { data, error } = await supabase
+      .from('places')
+      .select('*')
+      .eq('user', user.value.id)
+    if (error) throw error
+
+    return data
+  }
+
   const createPlace = async place => {
     const { data, error } = await supabase
       .from('places')
@@ -15,6 +25,7 @@ export default function usePlaces() {
   }
 
   return {
+    listPlaces,
     createPlace,
   }
 }

@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils'
-import ImageCardsList from '@/components/ui/ImageCardsList.vue'
+import ImageFullCardsList from '@/components/ui/ImageFullCardsList.vue'
 import { describe, expect, it } from 'vitest'
 
-describe('Components > UI > ImageCardsList', () => {
+describe('Components > UI > ImageFullCardsList', () => {
   it('renders', () => {
-    const wrapper = mount(ImageCardsList)
+    const wrapper = mount(ImageFullCardsList)
     expect(wrapper.exists).toBeTruthy()
     expect(wrapper.html()).toMatchSnapshot()
   })

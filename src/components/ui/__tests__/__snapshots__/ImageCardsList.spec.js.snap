@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
-exports[`Components > UI > ImageCardsList > renders 1`] = `
-"<section class=\\"flex flex-wrap\\" data-v-9ee667be=\\"\\">
+exports[`Components > UI > ImageFullCardsList > renders 1`] = `
+"<section class=\\"flex flex-wrap\\" data-v-06f0c5d2=\\"\\">
   <!--v-if-->
 </section>"
 `;
