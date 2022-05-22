@@ -14,14 +14,22 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  hasStyleSelected: {
+    type: Boolean,
+    default: false,
+  },
 })
 defineEmits(['click'])
 
 const cardClasses = computed(() => {
-  return {
+  let allClasses = {
     [props.size]: true,
-    selected: props.selected,
   }
+
+  if (props.hasStyleSelected) {
+    allClasses = { ...allClasses, selected: props.selected }
+  }
+  return allClasses
 })
 </script>
 

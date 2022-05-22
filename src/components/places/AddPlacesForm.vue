@@ -13,12 +13,13 @@ defineProps({
     default: () => [],
   },
 })
-const emit = defineEmits(['category-created'])
+const emit = defineEmits(['category-created', 'create-place'])
 
 const { t } = useI18n()
 const shouldShowCategoryForm = ref(false)
 const isSearchPlace = ref(false)
 const isVisited = ref(false)
+const place = ref({})
 let categorySelected = null
 
 const showNewCategory = () => {
@@ -35,15 +36,26 @@ const selectCategory = categoryId => {
   categorySelected = categoryId
   console.log(categorySelected)
 }
+const submitForm = () => {
+  emit('create-place', {
+    name: place.value.name,
+    visited: isVisited.value,
+    category: categorySelected,
+  })
+}
 </script>
 
 <template>
-  <form novalidate>
+  <form novalidate @submit.prevent="submitForm">
     <BaseToggle v-model="isSearchPlace" class="mb-4">
       {{ t('places.new.searchPlace') }}
     </BaseToggle>
     <BaseSearchInput v-if="isSearchPlace" />
-    <BaseInput v-else :placeholder="t('places.new.placeName')" />
+    <BaseInput
+      v-else
+      v-model="place.name"
+      :placeholder="t('places.new.placeName')"
+    />
     <section class="mt-7">
       <p>{{ t('places.new.selectList') }}</p>
       <div class="overflow-x-auto">
@@ -52,6 +64,7 @@ const selectCategory = categoryId => {
           size="small"
           :items="categories"
           :show-add="true"
+          :has-style-selected="true"
           @card-add-clicked="showNewCategory"
           @select-item="selectCategory"
         />
@@ -66,5 +79,11 @@ const selectCategory = categoryId => {
     <BaseToggle v-model="isVisited" class="mb-4">
       {{ t('places.new.isVisited') }}
     </BaseToggle>
+
+    <div class="mt-6">
+      <button type="submit" class="btn btn-md btn-outline btn-accent">
+        {{ t('places.new.createPlace') }}
+      </button>
+    </div>
   </form>
 </template>

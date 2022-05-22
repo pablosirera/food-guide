@@ -20,6 +20,7 @@
   },
   "places": {
     "new": {
+      "createPlace": "Crear sitio",
       "isVisited": "¿Ya has ido?",
       "placeName": "Nombre del sitio",
       "searchPlace": "¿Quieres buscar el sitio?",

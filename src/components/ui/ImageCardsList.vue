@@ -15,10 +15,14 @@ defineProps({
     type: String,
     default: 'normal',
   },
+  hasStyleSelected: {
+    type: Boolean,
+    default: false,
+  },
 })
 const emit = defineEmits(['card-add-clicked', 'select-item'])
 
-const itemSelectedId = ref()
+const itemSelectedId = ref(null)
 
 const checkIfIsSelected = itemId => {
   return itemSelectedId.value === itemId
@@ -36,6 +40,7 @@ const selectItem = item => {
       :key="index"
       :item="item"
       :size="size"
+      :has-style-selected="hasStyleSelected"
       :selected="checkIfIsSelected(item.id)"
       @click="selectItem(item.id)"
     />
