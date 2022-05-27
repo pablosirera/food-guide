@@ -1,8 +1,8 @@
 <script setup>
-import ImageFullCardsList from '@/components/ui/ImageFullCardsList.vue'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import usePlaces from '@/composables/usePlaces'
 import { ref } from 'vue'
+import BaseCard from '@/components/ui/BaseCard.vue'
 
 const { listPlaces } = usePlaces()
 const places = ref(null)
@@ -16,26 +16,17 @@ const loadData = async () => {
 }
 
 loadData()
-// const places = [
-//   {
-//     image: 'https://api.lorem.space/image/burger?w=400&h=225',
-//     name: 'Little thai',
-//   },
-//   {
-//     image: 'https://api.lorem.space/image/drink?w=400&h=225',
-//     name: 'Mcdonals',
-//   },
-//   {
-//     image: 'https://api.lorem.space/image/pizza?w=400&h=225',
-//     name: 'Burguer King',
-//   },
-// ]
 </script>
 
 <template>
   <BaseLayout>
-    <section class="flex justify-center p-3">
-      <ImageFullCardsList :items="places" />
+    <section class="grid grid-cols-2 justify-items-center gap-5 p-3">
+      <BaseCard
+        v-for="place in places"
+        :key="place.id"
+        :title="place.name"
+        image-url="https://api.lorem.space/image/shoes?w=400&h=225"
+      />
     </section>
   </BaseLayout>
 </template>
