@@ -16,7 +16,9 @@
   },
   "general": {
     "cancel": "Cancel",
-    "create": "Create"
+    "create": "Create",
+    "haveNotPlaces": "You don't have places for this category.",
+    "more": "More"
   },
   "places": {
     "new": {

@@ -16,7 +16,9 @@
   },
   "general": {
     "cancel": "Cancelar",
-    "create": "Crear"
+    "create": "Crear",
+    "haveNotPlaces": "No tienes sitios para esta categoría.",
+    "more": "Más"
   },
   "places": {
     "new": {

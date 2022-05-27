@@ -21,7 +21,7 @@ const tabs = [
 </script>
 
 <template>
-  <section>
+  <section class="p-4">
     <slot></slot>
     <BaseTabs :tabs="tabs" :use-icons="true" />
   </section>

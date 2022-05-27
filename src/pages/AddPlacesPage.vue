@@ -32,7 +32,7 @@ loadData()
 </script>
 
 <template>
-  <BaseLayout class="p-3">
+  <BaseLayout>
     <h2 class="text-3xl font-bold">{{ t('places.new.title') }}</h2>
     <AddPlacesForm
       class="mt-8"
