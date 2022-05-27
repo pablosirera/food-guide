@@ -28,6 +28,7 @@
       "searchPlace": "¿Quieres buscar el sitio?",
       "selectList": "Selecciona tu lista:",
       "title": "Añadir nuevo sitio"
-    }
+    },
+    "visited": "He ido"
   }
 }

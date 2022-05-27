@@ -1,11 +1,11 @@
 <script setup>
-import BaseLayout from '@/components/layouts/BaseLayout.vue'
-import usePlaces from '@/composables/usePlaces'
 import { ref } from 'vue'
-import BaseCard from '@/components/ui/BaseCard.vue'
-import useCategories from '../composables/useCategories'
-import BaseSearchInput from '../components/ui/BaseSearchInput.vue'
 import { useI18n } from 'vue-i18n'
+import usePlaces from '@/composables/usePlaces'
+import useCategories from '@/composables/useCategories'
+import BaseLayout from '@/components/layouts/BaseLayout.vue'
+import BaseCard from '@/components/ui/BaseCard.vue'
+import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
 
 const { listPlaces } = usePlaces()
 const { listCategories } = useCategories()
@@ -58,7 +58,13 @@ loadData()
           :key="place.id"
           :title="place.name"
           image-url="https://api.lorem.space/image/shoes?w=400&h=225"
-        />
+        >
+          <template #body>
+            <div v-if="place.visited" class="badge badge-secondary">
+              {{ t('places.visited') }}
+            </div>
+          </template>
+        </BaseCard>
       </div>
       <p v-else class="text-center py-6">
         {{ t('general.haveNotPlaces') }}

@@ -28,6 +28,7 @@
       "searchPlace": "Do you want to search the place?",
       "selectList": "Select your list:",
       "title": "Add new place"
-    }
+    },
+    "visited": "Visited"
   }
 }
