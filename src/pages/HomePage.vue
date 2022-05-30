@@ -57,7 +57,7 @@ loadData()
           v-for="place in category.places"
           :key="place.id"
           :title="place.name"
-          image-url="https://api.lorem.space/image/shoes?w=400&h=225"
+          image-url="https://api.lorem.space/image/burger?w=400&h=225"
         >
           <template #body>
             <div v-if="place.visited" class="badge badge-secondary">
