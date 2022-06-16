@@ -40,7 +40,7 @@ const cardClasses = computed(() => {
     @click="$emit('click')"
   >
     <figure class="w-full h-full overflow-hidden">
-      <img :src="item.image" />
+      <img lazy :src="item.image" />
     </figure>
     <div class="card-body justify-center">
       <h2 class="card-title text-center justify-center">{{ item.name }}</h2>

@@ -6,30 +6,27 @@ import useCategories from '@/composables/useCategories'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import BaseCard from '@/components/ui/BaseCard.vue'
 import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
+import ImageFullCardsList from '@/components/ui/ImageFullCardsList.vue'
 
-const { listPlaces } = usePlaces()
+const { listPlaces, listPlacesByCategory } = usePlaces()
 const { listCategories } = useCategories()
 const { t } = useI18n()
 
-const categoriesWithPlaces = ref(null)
+const categories = ref([])
+const places = ref([])
 
 const loadData = async () => {
   try {
-    const categories = await listCategories()
-    const places = await listPlaces()
-
-    categoriesWithPlaces.value = categories.map(category => {
-      const filteredPlaces = places.filter(
-        place => place.category === category.id,
-      )
-      return {
-        ...category,
-        places: filteredPlaces,
-      }
-    })
+    categories.value = await listCategories()
+    places.value = await listPlaces()
   } catch (error) {
     console.error(error)
   }
+}
+
+const selectCategory = async category => {
+  console.log(category)
+  places.value = await listPlacesByCategory(category)
 }
 
 loadData()
@@ -38,23 +35,18 @@ loadData()
 <template>
   <BaseLayout class="pb-16">
     <BaseSearchInput class="mb-4" />
-    <section
-      v-for="category in categoriesWithPlaces"
-      :key="category.id"
-      class="mb-4"
-    >
-      <div class="flex justify-between">
-        <h2 class="font-bold text-2xl">{{ category.name }}</h2>
-        <router-link to="" class="font-bold text-success uppercase">
-          {{ t('general.more') }}
-        </router-link>
-      </div>
-      <div
-        v-if="category.places.length"
-        class="grid grid-cols-2 justify-items-center gap-5 p-3"
-      >
+    <section>
+      <ImageFullCardsList
+        class="flex-nowrap min-w-max"
+        size="small"
+        :items="categories"
+        @select-item="selectCategory"
+      />
+    </section>
+    <section class="mb-4 mt-4 grid grid-cols-2 gap-4 justify-items-center">
+      <TransitionGroup>
         <BaseCard
-          v-for="place in category.places"
+          v-for="place in places"
           :key="place.id"
           :title="place.name"
           image-url="https://api.lorem.space/image/burger?w=400&h=225"
@@ -65,10 +57,7 @@ loadData()
             </div>
           </template>
         </BaseCard>
-      </div>
-      <p v-else class="text-center py-6">
-        {{ t('general.haveNotPlaces') }}
-      </p>
+      </TransitionGroup>
     </section>
   </BaseLayout>
 </template>

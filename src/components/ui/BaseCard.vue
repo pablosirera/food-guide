@@ -33,7 +33,7 @@ const cardClasses = computed(() => {
       <img :src="imageUrl" :alt="altImage" />
     </figure>
     <div class="card-body">
-      <h2 class="card-title">
+      <h2 class="card-title text-base">
         {{ title }}
         <slot name="title" />
       </h2>
