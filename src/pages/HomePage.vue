@@ -7,6 +7,7 @@ import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import BaseCard from '@/components/ui/BaseCard.vue'
 import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
 import ImageFullCardsList from '@/components/ui/ImageFullCardsList.vue'
+import ImageFullCard from '@/components/ui/ImageFullCard.vue'
 
 const { listPlaces, listPlacesByCategory } = usePlaces()
 const { listCategories } = useCategories()
@@ -25,8 +26,11 @@ const loadData = async () => {
 }
 
 const selectCategory = async category => {
-  console.log(category)
-  places.value = await listPlacesByCategory(category)
+  if (category === 'all') {
+    places.value = await listPlaces()
+  } else {
+    places.value = await listPlacesByCategory(category)
+  }
 }
 
 loadData()
@@ -41,7 +45,15 @@ loadData()
         size="small"
         :items="categories"
         @select-item="selectCategory"
-      />
+      >
+        <template #first>
+          <ImageFullCard
+            size="small"
+            :item="{ name: 'Todos' }"
+            @click="selectCategory('all')"
+          />
+        </template>
+      </ImageFullCardsList>
     </section>
     <section class="mb-4 mt-4 grid grid-cols-2 gap-4 justify-items-center">
       <TransitionGroup>

@@ -35,6 +35,7 @@ const selectItem = item => {
 
 <template>
   <section class="flex flex-wrap">
+    <slot name="first" />
     <ImageFullCard
       v-for="(item, index) in items"
       :key="index"
