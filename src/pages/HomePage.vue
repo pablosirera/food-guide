@@ -2,23 +2,18 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import usePlaces from '@/composables/usePlaces'
-import useCategories from '@/composables/useCategories'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import BaseCard from '@/components/ui/BaseCard.vue'
 import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
-import ImageFullCardsList from '@/components/ui/ImageFullCardsList.vue'
-import ImageFullCard from '@/components/ui/ImageFullCard.vue'
+import CategoriesList from '@/components/categories/CategoriesList.vue'
 
 const { listPlaces, listPlacesByCategory } = usePlaces()
-const { listCategories } = useCategories()
 const { t } = useI18n()
 
-const categories = ref([])
 const places = ref([])
 
 const loadData = async () => {
   try {
-    categories.value = await listCategories()
     places.value = await listPlaces()
   } catch (error) {
     console.error(error)
@@ -40,20 +35,7 @@ loadData()
   <BaseLayout class="pb-16">
     <BaseSearchInput class="mb-4" />
     <section>
-      <ImageFullCardsList
-        class="flex-nowrap min-w-max"
-        size="small"
-        :items="categories"
-        @select-item="selectCategory"
-      >
-        <template #first>
-          <ImageFullCard
-            size="small"
-            :item="{ name: 'Todos' }"
-            @click="selectCategory('all')"
-          />
-        </template>
-      </ImageFullCardsList>
+      <CategoriesList @select-category="selectCategory" />
     </section>
     <section class="mb-4 mt-4 grid grid-cols-2 gap-4 justify-items-center">
       <TransitionGroup>
