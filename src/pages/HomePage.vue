@@ -35,6 +35,10 @@ loadData()
   <BaseLayout class="pb-16">
     <BaseSearchInput class="mb-4" />
     <section>
+      <div class="flex justify-between items-center">
+        <h2 class="font-bold text-lg">Listas</h2>
+        <router-link to="/categories" class="link">Ver más</router-link>
+      </div>
       <CategoriesList @select-category="selectCategory" />
     </section>
     <section class="mb-4 mt-4 grid grid-cols-2 gap-4 justify-items-center">

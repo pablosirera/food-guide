@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { computed } from 'vue'
+
+const props = defineProps({
   label: {
     type: String,
     default: '',
@@ -17,12 +19,22 @@ defineProps({
     type: String,
     default: '',
   },
+  expanded: {
+    type: Boolean,
+    default: false,
+  },
 })
 defineEmits(['update:modelValue'])
+
+const formControlInputClass = computed(() => {
+  return {
+    'max-w-xs': !props.expanded,
+  }
+})
 </script>
 
 <template>
-  <div class="form-control w-full max-w-xs">
+  <div class="form-control w-full" :class="formControlInputClass">
     <label v-if="label" class="label">
       <span class="label-text">{{ label }}</span>
     </label>
@@ -30,7 +42,8 @@ defineEmits(['update:modelValue'])
       :value="modelValue"
       :type="type"
       :placeholder="placeholder"
-      class="input input-bordered w-full max-w-xs"
+      :class="formControlInputClass"
+      class="input input-bordered w-full"
       @input="$emit('update:modelValue', $event.target.value)"
     />
   </div>

@@ -36,5 +36,6 @@ module.exports = {
       },
     ],
     'unit-allowed-list': ['px', 'em', 'rem', '%', 's', 'vh', 'vw', 'fr', 'seg'],
+    'function-no-unknown': [true, { ignoreFunctions: ['theme'] }],
   },
 }

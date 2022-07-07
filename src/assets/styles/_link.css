@@ -1,0 +1,9 @@
+.link {
+  color: theme('colors.success');
+  text-decoration: none;
+  font-size: .75rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
