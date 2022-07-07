@@ -1,11 +1,10 @@
 <script setup>
 import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
-import ImageFullCardsList from '@/components/ui/ImageFullCardsList.vue'
-import NewCategoryForm from '@/components/places/NewCategoryForm.vue'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseToggle from '@/components/ui/BaseToggle.vue'
 import BaseInput from '@/components/ui/BaseInput.vue'
+import BaseSelect from '@/components/ui/BaseSelect.vue'
 
 defineProps({
   categories: {
@@ -13,40 +12,26 @@ defineProps({
     default: () => [],
   },
 })
-const emit = defineEmits(['category-created', 'create-place'])
+const emit = defineEmits(['create-place'])
 
 const { t } = useI18n()
-const shouldShowCategoryForm = ref(false)
 const isSearchPlace = ref(false)
 const isVisited = ref(false)
 const place = ref({})
-let categorySelected = null
+const categorySelected = ref(null)
 
-const showNewCategory = () => {
-  shouldShowCategoryForm.value = true
-}
-const hideCategoryForm = () => {
-  shouldShowCategoryForm.value = false
-}
-const createCategory = category => {
-  hideCategoryForm()
-  emit('category-created', category)
-}
-const selectCategory = categoryId => {
-  categorySelected = categoryId
-}
 const submitForm = () => {
   emit('create-place', {
     name: place.value.name,
     visited: isVisited.value,
-    category: categorySelected,
+    category: categorySelected.value,
   })
 }
 </script>
 
 <template>
   <form novalidate @submit.prevent="submitForm">
-    <BaseToggle v-model="isSearchPlace" class="mb-4">
+    <BaseToggle v-model="isSearchPlace">
       {{ t('places.new.searchPlace') }}
     </BaseToggle>
     <BaseSearchInput v-if="isSearchPlace" />
@@ -55,25 +40,11 @@ const submitForm = () => {
       v-model="place.name"
       :placeholder="t('places.new.placeName')"
     />
-    <section class="mt-7">
+    <section class="mt-6">
       <p>{{ t('places.new.selectList') }}</p>
-      <div class="overflow-x-auto">
-        <ImageFullCardsList
-          class="flex-nowrap min-w-max"
-          size="small"
-          :items="categories"
-          :show-add="true"
-          :has-style-selected="true"
-          @card-add-clicked="showNewCategory"
-          @select-item="selectCategory"
-        />
-      </div>
-
-      <NewCategoryForm
-        v-if="shouldShowCategoryForm"
-        @cancel="hideCategoryForm"
-        @category-created="createCategory"
-      />
+      <BaseSelect v-model="categorySelected" :options="categories">
+        <option selected disabled>Tus listas</option>
+      </BaseSelect>
     </section>
     <BaseToggle v-model="isVisited" class="mb-4">
       {{ t('places.new.isVisited') }}
