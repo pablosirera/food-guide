@@ -1,19 +1,33 @@
 <script setup>
-import { SearchIcon } from '@heroicons/vue/solid'
+import { computed } from 'vue'
+
+const props = defineProps({
+  modelValue: {
+    type: String,
+    default: '',
+  },
+})
+const emit = defineEmits(['update:modelValue', 'click'])
+
+const query = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    emit('update:modelValue', newValue)
+  },
+})
 </script>
 
 <template>
-  <div class="form-control">
-    <div class="input-group">
-      <!-- TODO: translate this placeholder -->
-      <input
-        type="text"
-        placeholder="Buscar..."
-        class="input input-bordered w-full"
-      />
-      <button class="btn btn-square">
-        <SearchIcon class="h-6 w-6" />
-      </button>
-    </div>
+  <div class="input-group">
+    <!-- TODO: translate this placeholder -->
+    <input
+      v-model="query"
+      type="text"
+      placeholder="Buscar..."
+      class="input input-bordered w-full rounded-lg"
+      @click="$emit('click')"
+    />
   </div>
 </template>

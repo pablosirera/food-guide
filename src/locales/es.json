@@ -25,7 +25,7 @@
       "createPlace": "Crear sitio",
       "isVisited": "¿Ya has ido?",
       "placeName": "Nombre del sitio",
-      "searchPlace": "¿Quieres buscar el sitio?",
+      "searchPlace": "¿Quieres añadir el sitio manualmente?",
       "selectList": "Selecciona tu lista:",
       "title": "Añadir nuevo sitio"
     },

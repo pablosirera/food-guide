@@ -1,10 +1,10 @@
 <script setup>
-import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import BaseToggle from '@/components/ui/BaseToggle.vue'
 import BaseInput from '@/components/ui/BaseInput.vue'
 import BaseSelect from '@/components/ui/BaseSelect.vue'
+import SearchPlacesInput from '@/components/places/SearchPlacesInput.vue'
 
 defineProps({
   categories: {
@@ -15,31 +15,46 @@ defineProps({
 const emit = defineEmits(['create-place'])
 
 const { t } = useI18n()
-const isSearchPlace = ref(false)
+const isManuallyPlace = ref(false)
 const isVisited = ref(false)
-const place = ref({})
+const placeForm = ref({})
 const categorySelected = ref(null)
+const selectedPlace = ref(null)
 
 const submitForm = () => {
   emit('create-place', {
-    name: place.value.name,
+    name: placeForm.value.name,
     visited: isVisited.value,
     category: categorySelected.value,
+    placeId: selectedPlace.value && selectedPlace.value.place_id,
   })
+}
+
+const selectPlace = item => {
+  selectedPlace.value = item
+  placeForm.value.name =
+    selectedPlace.value && selectedPlace.value.structured_formatting.main_text
 }
 </script>
 
 <template>
   <form novalidate @submit.prevent="submitForm">
-    <BaseToggle v-model="isSearchPlace">
+    <BaseToggle v-model="isManuallyPlace">
       {{ t('places.new.searchPlace') }}
     </BaseToggle>
-    <BaseSearchInput v-if="isSearchPlace" />
+    <SearchPlacesInput v-if="!isManuallyPlace" @select-place="selectPlace" />
     <BaseInput
       v-else
-      v-model="place.name"
+      v-model="placeForm.name"
       :placeholder="t('places.new.placeName')"
     />
+
+    <BaseInput
+      v-if="selectedPlace"
+      v-model="placeForm.name"
+      label="Nombre de tu sitio"
+    />
+
     <section class="mt-6">
       <p>{{ t('places.new.selectList') }}</p>
       <BaseSelect v-model="categorySelected" :options="categories">
