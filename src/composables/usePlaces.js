@@ -15,6 +15,18 @@ export default function usePlaces() {
     return data
   }
 
+  const listPlacesHome = async () => {
+    const { data, error } = await supabase
+      .from('places')
+      .select('*')
+      .eq('user', user.value.id)
+      .order('id', { ascending: false })
+      .limit(8)
+    if (error) throw error
+
+    return data
+  }
+
   const listPlacesByCategory = async category => {
     const { data, error } = await supabase
       .from('places')
@@ -37,6 +49,7 @@ export default function usePlaces() {
 
   return {
     listPlaces,
+    listPlacesHome,
     createPlace,
     listPlacesByCategory,
   }

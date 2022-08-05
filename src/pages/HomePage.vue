@@ -6,14 +6,14 @@ import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import BaseCard from '@/components/ui/BaseCard.vue'
 import CategoriesList from '@/components/categories/CategoriesList.vue'
 
-const { listPlaces, listPlacesByCategory } = usePlaces()
+const { listPlacesHome, listPlacesByCategory } = usePlaces()
 const { t } = useI18n()
 
 const places = ref([])
 
 const loadData = async () => {
   try {
-    places.value = await listPlaces()
+    places.value = await listPlacesHome()
   } catch (error) {
     console.error(error)
   }
@@ -21,7 +21,7 @@ const loadData = async () => {
 
 const selectCategory = async category => {
   if (category === 'all') {
-    places.value = await listPlaces()
+    places.value = await listPlacesHome()
   } else {
     places.value = await listPlacesByCategory(category)
   }
