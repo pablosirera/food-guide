@@ -4,7 +4,6 @@ import { useI18n } from 'vue-i18n'
 import usePlaces from '@/composables/usePlaces'
 import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import BaseCard from '@/components/ui/BaseCard.vue'
-import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
 import CategoriesList from '@/components/categories/CategoriesList.vue'
 
 const { listPlaces, listPlacesByCategory } = usePlaces()
@@ -33,7 +32,6 @@ loadData()
 
 <template>
   <BaseLayout class="pb-16">
-    <BaseSearchInput class="mb-4" />
     <section>
       <div class="flex justify-between items-center">
         <h2 class="font-bold text-lg">Listas</h2>
