@@ -1,5 +1,4 @@
 <script setup>
-import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import AddPlacesForm from '@/components/places/AddPlacesForm.vue'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'

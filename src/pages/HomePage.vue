@@ -2,12 +2,13 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import usePlaces from '@/composables/usePlaces'
-import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import BaseCard from '@/components/ui/BaseCard.vue'
 import CategoriesList from '@/components/categories/CategoriesList.vue'
+import { useRouter } from 'vue-router'
 
 const { listPlacesHome, listPlacesByCategory } = usePlaces()
 const { t } = useI18n()
+const router = useRouter()
 
 const places = ref([])
 
@@ -25,6 +26,10 @@ const selectCategory = async category => {
   } else {
     places.value = await listPlacesByCategory(category)
   }
+}
+
+const goToPlaceDetail = placeId => {
+  router.push(`/places/${placeId}`)
 }
 
 loadData()
@@ -46,6 +51,8 @@ loadData()
           :key="place.id"
           :title="place.name"
           image-url="https://api.lorem.space/image/burger?w=400&h=225"
+          class="cursor-pointer"
+          @click="goToPlaceDetail(place.id)"
         >
           <template #body>
             <div v-if="place.visited" class="badge badge-secondary">

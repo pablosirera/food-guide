@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import useCategories from '@/composables/useCategories'
-import BaseLayout from '@/components/layouts/BaseLayout.vue'
 import NewCategoryModal from '@/components/categories/NewCategoryModal.vue'
 
 const { listCategories } = useCategories()

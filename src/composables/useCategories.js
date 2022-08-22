@@ -24,8 +24,19 @@ export default function useCategories() {
     return data
   }
 
+  const readCategory = async categoryId => {
+    const { data, error } = await supabase
+      .from('categories')
+      .select('*')
+      .eq('id', categoryId)
+    if (error) throw error
+
+    return data[0]
+  }
+
   return {
     listCategories,
     createCategory,
+    readCategory,
   }
 }

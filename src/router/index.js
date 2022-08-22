@@ -15,6 +15,11 @@ const routes = [
     },
   },
   {
+    name: 'PlaceDetailPage',
+    path: '/places/:id',
+    component: () => import('@/pages/PlaceDetailPage.vue'),
+  },
+  {
     name: 'AddPlacesPage',
     path: '/places/new',
     component: () => import('@/pages/AddPlacesPage.vue'),

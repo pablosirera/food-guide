@@ -47,10 +47,21 @@ export default function usePlaces() {
     return data
   }
 
+  const readPlace = async placeId => {
+    const { data, error } = await supabase
+      .from('places')
+      .select('*')
+      .eq('id', placeId)
+    if (error) throw error
+
+    return data[0]
+  }
+
   return {
     listPlaces,
     listPlacesHome,
     createPlace,
     listPlacesByCategory,
+    readPlace,
   }
 }
