@@ -3,11 +3,14 @@ import { useRoute, useRouter } from 'vue-router'
 import usePlaces from '@/composables/usePlaces'
 import { ref } from 'vue'
 import useCategories from '@/composables/useCategories'
+import { useI18n } from 'vue-i18n'
+import StarsRating from '../components/ui/StarsRating.vue'
 
 const route = useRoute()
 const router = useRouter()
 const { readPlace } = usePlaces()
 const { readCategory } = useCategories()
+const { t } = useI18n()
 
 const place = ref({})
 const category = ref({})
@@ -21,7 +24,7 @@ loadData()
 </script>
 
 <template>
-  <BaseLayout class="pb-16">
+  <BaseLayout>
     <ChevronLeftIcon class="w-8 h-8 cursor-pointer" @click="router.go(-1)" />
     <section>
       <div class="relative max-w-screen-xl px-4 py-4 mx-auto">
@@ -31,7 +34,7 @@ loadData()
               <img
                 alt="Mobile Phone Stand"
                 class="object-cover rounded-xl"
-                src="https://api.lorem.space/image/burger?w=400&h=225"
+                src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
               />
             </div>
 
@@ -41,7 +44,7 @@ loadData()
                 <img
                   alt="Mobile Phone Stand"
                   class="object-cover rounded-xl"
-                  src="https://api.lorem.space/image/burger?w=400&h=225"
+                  src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                 />
               </div>
 
@@ -49,7 +52,7 @@ loadData()
                 <img
                   alt="Mobile Phone Stand"
                   class="object-cover rounded-xl"
-                  src="https://api.lorem.space/image/burger?w=400&h=225"
+                  src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                 />
               </div>
 
@@ -57,7 +60,7 @@ loadData()
                 <img
                   alt="Mobile Phone Stand"
                   class="object-cover rounded-xl"
-                  src="https://api.lorem.space/image/burger?w=400&h=225"
+                  src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                 />
               </div>
 
@@ -65,7 +68,7 @@ loadData()
                 <img
                   alt="Mobile Phone Stand"
                   class="object-cover rounded-xl"
-                  src="https://api.lorem.space/image/burger?w=400&h=225"
+                  src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                 />
               </div>
             </div>
@@ -73,7 +76,7 @@ loadData()
 
           <div class="sticky top-0">
             <strong v-if="place.visited" class="badge badge-secondary">
-              He ido
+              {{ t('places.visited') }}
             </strong>
 
             <div class="flex justify-between mt-6">
@@ -86,64 +89,7 @@ loadData()
                   {{ `${category.emoji} ${category.name}` }}
                 </p>
 
-                <!-- TODO: move this stars to component rating -->
-
-                <div class="flex mt-2 -ml-0.5">
-                  <svg
-                    class="w-5 h-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="w-5 h-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="w-5 h-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="w-5 h-5 text-yellow-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="w-5 h-5 text-gray-200"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-                </div>
+                <StarsRating :stars="place.rating || 0" />
               </div>
             </div>
           </div>

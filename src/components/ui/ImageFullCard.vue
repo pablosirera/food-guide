@@ -35,7 +35,7 @@ const cardClasses = computed(() => {
 
 <template>
   <div
-    class="card m-3 image-full cursor-pointer"
+    class="card image-full cursor-pointer"
     :class="cardClasses"
     @click="$emit('click')"
   >

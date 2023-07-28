@@ -1,13 +1,12 @@
 <script setup>
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 import usePlaces from '@/composables/usePlaces'
-import BaseCard from '@/components/ui/BaseCard.vue'
 import CategoriesList from '@/components/categories/CategoriesList.vue'
 import { useRouter } from 'vue-router'
+import PlaceCard from '@/components/places/PlaceCard.vue'
 
 const { listPlacesHome, listPlacesByCategory } = usePlaces()
-const { t } = useI18n()
+
 const router = useRouter()
 
 const places = ref([])
@@ -36,31 +35,24 @@ loadData()
 </script>
 
 <template>
-  <BaseLayout class="pb-16">
-    <section>
-      <div class="flex justify-between items-center">
-        <h2 class="font-bold text-lg">Listas</h2>
-        <router-link to="/categories" class="link">Ver más</router-link>
-      </div>
-      <CategoriesList @select-category="selectCategory" />
-    </section>
-    <section class="mb-4 mt-4 grid grid-cols-2 gap-4 justify-items-center">
-      <TransitionGroup>
-        <BaseCard
-          v-for="place in places"
-          :key="place.id"
-          :title="place.name"
-          image-url="https://api.lorem.space/image/burger?w=400&h=225"
-          class="cursor-pointer"
-          @click="goToPlaceDetail(place.id)"
-        >
-          <template #body>
-            <div v-if="place.visited" class="badge badge-secondary">
-              {{ t('places.visited') }}
-            </div>
-          </template>
-        </BaseCard>
-      </TransitionGroup>
+  <BaseLayout>
+    <template #header>
+      <header class="p-4 pb-0">
+        <div class="flex justify-between items-center">
+          <h2 class="font-bold text-lg">Listas</h2>
+          <router-link to="/categories" class="link">Ver más</router-link>
+        </div>
+        <CategoriesList @select-category="selectCategory" />
+      </header>
+    </template>
+    <section class="mb-4 mt-4 flex flex-col gap-4">
+      <h2 class="font-bold text-lg">Añadido recientemente</h2>
+      <PlaceCard
+        v-for="place in places"
+        :key="place.id"
+        :item="place"
+        @click="goToPlaceDetail(place.id)"
+      />
     </section>
   </BaseLayout>
 </template>
