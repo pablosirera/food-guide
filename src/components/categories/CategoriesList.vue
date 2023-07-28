@@ -26,7 +26,6 @@ loadData()
 
 <template>
   <ImageFullCardsList
-    class="flex-nowrap min-w-max"
     size="small"
     :items="categories"
     @select-item="selectCategory"

@@ -1,3 +1,7 @@
 // Vitest Snapshot v1
 
-exports[`Components > UI > ImageFullCardsList > renders 1`] = `"<section class=\\"flex flex-wrap\\"></section>"`;
+exports[`Components > UI > ImageFullCardsList > renders 1`] = `
+"<section class=\\"overflow-x-scroll\\">
+  <div class=\\"flex flex-nowrap min-w-max gap-2\\"></div>
+</section>"
+`;

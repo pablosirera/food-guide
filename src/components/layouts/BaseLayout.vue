@@ -21,8 +21,9 @@ const tabs = [
 </script>
 
 <template>
-  <section class="p-4">
+  <slot name="header"></slot>
+  <main class="p-4 h-screen">
     <slot></slot>
-    <BaseTabs :tabs="tabs" :use-icons="true" />
-  </section>
+  </main>
+  <BaseTabs :tabs="tabs" :use-icons="true" />
 </template>

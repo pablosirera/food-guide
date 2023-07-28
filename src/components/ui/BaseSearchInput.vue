@@ -20,14 +20,12 @@ const query = computed({
 </script>
 
 <template>
-  <div class="input-group">
-    <!-- TODO: translate this placeholder -->
-    <input
-      v-model="query"
-      type="text"
-      placeholder="Buscar..."
-      class="input input-bordered w-full rounded-lg"
-      @click="$emit('click')"
-    />
-  </div>
+  <!-- TODO: translate this placeholder -->
+  <input
+    v-model="query"
+    type="text"
+    placeholder="Buscar..."
+    class="input input-bordered w-full rounded-lg"
+    @click="$emit('click')"
+  />
 </template>

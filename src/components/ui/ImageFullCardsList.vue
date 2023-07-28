@@ -30,16 +30,18 @@ const selectItem = item => {
 </script>
 
 <template>
-  <section class="flex flex-wrap">
-    <slot name="first" />
-    <ImageFullCard
-      v-for="(item, index) in items"
-      :key="index"
-      :item="item"
-      :size="size"
-      :has-style-selected="hasStyleSelected"
-      :selected="checkIfIsSelected(item.id)"
-      @click="selectItem(item.id)"
-    />
+  <section class="overflow-x-scroll">
+    <div class="flex flex-nowrap min-w-max gap-2">
+      <slot name="first" />
+      <ImageFullCard
+        v-for="(item, index) in items"
+        :key="index"
+        :item="item"
+        :size="size"
+        :has-style-selected="hasStyleSelected"
+        :selected="checkIfIsSelected(item.id)"
+        @click="selectItem(item.id)"
+      />
+    </div>
   </section>
 </template>

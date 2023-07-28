@@ -28,7 +28,7 @@ loadData()
 </script>
 
 <template>
-  <BaseLayout class="pb-16">
+  <BaseLayout>
     <div class="flex justify-between items-center mb-6">
       <h2 class="font-bold text-xl">Tus listas</h2>
       <button class="btn btn-sm btn-outline btn-info" @click="toggleModal">

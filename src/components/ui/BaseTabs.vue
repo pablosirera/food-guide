@@ -41,7 +41,7 @@ const getTabActiveClass = tabRoute => {
 
 <style scoped>
 .tabs {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   left: 0;

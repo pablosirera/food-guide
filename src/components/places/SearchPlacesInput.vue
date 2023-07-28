@@ -1,58 +1,48 @@
-<script>
+<script setup>
 import BaseSearchInput from '@/components/ui/BaseSearchInput.vue'
-import { ref } from 'vue'
-import { usePlacesAutocomplete } from 'v-use-places-autocomplete'
-import { useState } from '@/composables/useState'
+import { ref, watch } from 'vue'
 
-export default {
-  components: {
-    BaseSearchInput,
-  },
-  emits: ['select-place'],
-  setup(props, { emit }) {
-    const query = ref('')
-    const [menuOpen, setMenuOpen] = useState()
+const emit = defineEmits(['select-place'])
 
-    const { suggestions } = usePlacesAutocomplete(query, {
-      debounce: 500,
-      minLengthAutocomplete: 3,
-    })
+const query = ref('')
+const suggestions = ref([])
 
-    const selectPlace = item => {
-      // TODO: transform name properties item
-      emit('select-place', item)
-      setMenuOpen(false)
-    }
+watch(query, () => {
+  setTimeout(async () => {
+    const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&q=${encodeURI(
+      query.value,
+    )}`
 
-    return {
-      query,
-      suggestions,
-      selectPlace,
-      menuOpen,
-      setMenuOpen,
-    }
-  },
+    const response = await fetch(api)
+    const { features } = await response.json()
+    suggestions.value = features
+  }, 2000)
+})
+const selectPlace = item => {
+  // TODO: transform name properties item
+  emit('select-place', item)
+  suggestions.value = []
 }
 </script>
 
 <template>
   <div class="dropdown dropdown-end w-full">
     <label tabindex="0">
-      <BaseSearchInput v-model="query" @click="setMenuOpen(true)" />
+      <BaseSearchInput v-model="query" />
     </label>
 
     <ul
-      v-if="menuOpen && suggestions.length"
+      v-if="suggestions.length"
       tabindex="0"
       class="menu dropdown-content p-0 shadow bg-base-100 rounded-box w-full mt-2 left-0 border"
     >
       <li
         v-for="item in suggestions"
-        :key="item.place_id"
+        :key="item.properties.place_id"
         class="border-b-2 cursor-pointer p-2 hover:bg-base-200"
         @click="selectPlace(item)"
       >
-        {{ item.description }}
+        {{ item.properties.display_name }}
       </li>
     </ul>
   </div>

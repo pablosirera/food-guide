@@ -26,14 +26,14 @@ const submitForm = () => {
     name: placeForm.value.name,
     visited: isVisited.value,
     category: categorySelected.value,
-    placeId: selectedPlace.value && selectedPlace.value.place_id,
+    placeId: selectedPlace.value && selectedPlace.value.properties.place_id,
   })
 }
 
 const selectPlace = item => {
   selectedPlace.value = item
   placeForm.value.name =
-    selectedPlace.value && selectedPlace.value.structured_formatting.main_text
+    selectedPlace.value && selectedPlace.value.properties.display_name
 }
 </script>
 
