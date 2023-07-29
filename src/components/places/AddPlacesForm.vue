@@ -5,6 +5,7 @@ import BaseToggle from '@/components/ui/BaseToggle.vue'
 import BaseInput from '@/components/ui/BaseInput.vue'
 import BaseSelect from '@/components/ui/BaseSelect.vue'
 import SearchPlacesInput from '@/components/places/SearchPlacesInput.vue'
+import StarsRating from '../ui/StarsRating.vue'
 
 defineProps({
   categories: {
@@ -17,7 +18,9 @@ const emit = defineEmits(['create-place'])
 const { t } = useI18n()
 const isManuallyPlace = ref(false)
 const isVisited = ref(false)
-const placeForm = ref({})
+const placeForm = ref({
+  rating: 0,
+})
 const categorySelected = ref(null)
 const selectedPlace = ref(null)
 
@@ -27,6 +30,7 @@ const submitForm = () => {
     visited: isVisited.value,
     category: categorySelected.value,
     placeId: selectedPlace.value && selectedPlace.value.properties.place_id,
+    rating: placeForm.value.rating,
   })
 }
 
@@ -64,6 +68,11 @@ const selectPlace = item => {
     <BaseToggle v-model="isVisited" class="mb-4">
       {{ t('places.new.isVisited') }}
     </BaseToggle>
+    <StarsRating
+      :stars="placeForm.rating"
+      :edit-mode="true"
+      @select="$event => (placeForm.rating = $event)"
+    />
 
     <div class="mt-6">
       <button type="submit" class="btn btn-md btn-outline btn-accent">
